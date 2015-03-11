@@ -12,9 +12,6 @@
 
 @interface CustomTableViewCell : SWTableViewCell //UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (weak, nonatomic) IBOutlet UILabel *lblObjetoEmprestado;
-@property (weak, nonatomic) IBOutlet UILabel *lblPraQuemEmprestou;
 @property (strong, nonatomic) PFObject *emprestimo;
 
 @end
