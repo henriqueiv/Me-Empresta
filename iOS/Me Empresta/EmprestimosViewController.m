@@ -12,7 +12,7 @@
 #import <Parse/Parse.h>
 
 #define SWIPE_CELL_RIGHT_DELETE_BUTTON 0
-
+#define SWIPE_CELL_LEFT_SETTLE_BUTTON 0
 @interface EmprestimosViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *btnAdd;
@@ -39,7 +39,7 @@
     
     UITapGestureRecognizer *tapLogout = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapLogout)];
     [tapLogout setNumberOfTapsRequired:1];
-    [_btnLogout addGestureRecognizer:tapLogout];    
+    [_btnLogout addGestureRecognizer:tapLogout];
     
     // Caso user interaction esteja desativado no IB descomentar abaixo
     //[_imageView setUserInteractionEnabled:YES];
@@ -66,6 +66,7 @@
     NSString *username = [[PFUser currentUser] username];
     
     [query whereKey:@"de" equalTo:username];
+    [query whereKey:@"devolvido" equalTo:[NSNumber numberWithBool:NO]];
     _emprestimos = [query findObjects:&erro];
     if (erro) {
         NSLog(@"Erro: %@", erro);
@@ -82,33 +83,76 @@
     return _emprestimos.count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return [NSString stringWithFormat:@"Section: %ld", section];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Cinza escuro: 62,65,72
+    // Amarelo claro: 255, 252, 179
+    UIColor *cinza = [UIColor colorWithRed:255.0f/255
+                                     green:252.0f/255
+                                      blue:179.0f/255
+                                     alpha:1.0f];
+
+    UIColor *amarelo = [UIColor colorWithRed:255.0f/255
+                                     green:252.0f/255
+                                      blue:179.0f/255
+                                     alpha:1.0f];
+    
+    
+    cell.backgroundColor = amarelo;
+    
+    [cell.textLabel setBackgroundColor:cell.backgroundColor];
+    [cell.detailTextLabel setBackgroundColor:cell.backgroundColor];
+    
+    [cell.textLabel setTextColor:[UIColor blackColor]];
+    [cell.detailTextLabel setTextColor:[UIColor blackColor]];
+    
+}
+
+-(UIColor*)invertColor:(UIColor*)baseColor{
+    CGFloat r, g, b, a;
+    [baseColor getRed:&r green:&g blue:&b alpha:&a];
+    return [UIColor colorWithRed:1.-r green:1.-g blue:1.-b alpha:a];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"emprestimoCell";
     CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     PFObject *o = _emprestimos[indexPath.row];
-
-    cell.lblPraQuemEmprestou.text = [o objectForKey:@"para"];
-    cell.lblObjetoEmprestado.text = [o objectForKey:@"descricao"];
+    
+    cell.textLabel.text = [o objectForKey:@"descricao"];
+    cell.detailTextLabel.text = [o objectForKey:@"para"];
     PFFile *eventImage = [o objectForKey:@"imagem"];
     if(eventImage != NULL){
         [eventImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^(){
                 UIImage *thumbnailImage = [UIImage imageWithData:imageData];
-                cell.imgView.image = thumbnailImage;
-                
+                cell.imageView.image = thumbnailImage;
             });
         }];
     }
     
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor: [UIColor colorWithRed:1.0f
-                                                                       green:0.231f
-                                                                        blue:0.188
+    [rightUtilityButtons sw_addUtilityButtonWithColor: [UIColor colorWithRed:198.0f/255.0f
+                                                                       green:33.0f/255.0f
+                                                                        blue:37.0f/255.0f
                                                                        alpha:1.0f]
                                                 title:@"Excluir"];
+    
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    [leftUtilityButtons sw_addUtilityButtonWithColor: [UIColor colorWithRed:46/255.0f
+                                                                      green:165.0f/255.0f
+                                                                       blue:27.0f/255.0f
+                                                                      alpha:1.0f]
+                                               title:@"Devolvido"];
     cell.delegate = self;
     cell.rightUtilityButtons = rightUtilityButtons;
+    cell.leftUtilityButtons = leftUtilityButtons;
     cell.emprestimo = o;
+    NSLog(@"%@", cell);
+    
     return cell;
 }
 
@@ -123,7 +167,7 @@
             NSIndexPath *indexPath = (NSIndexPath*) sender;
             CustomTableViewCell *cell = (CustomTableViewCell*) [self.tableView cellForRowAtIndexPath:indexPath];
             
-            dvc.imagem = cell.imgView.image;
+            dvc.imagem = cell.imageView.image;
             dvc.emprestimo = _emprestimos[indexPath.row];
             dvc.editing = YES;
         }else if ([sender isEqual:_btnAdd]){
@@ -149,10 +193,36 @@
         case SWIPE_CELL_RIGHT_DELETE_BUTTON:{
             CustomTableViewCell *customCell = (CustomTableViewCell*) cell;
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-
+            
             [customCell.emprestimo deleteInBackground];
             [_emprestimos removeObjectAtIndex:cellIndexPath.row];
             [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+-(void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index{
+    switch (index) {
+        case SWIPE_CELL_LEFT_SETTLE_BUTTON:{
+            CustomTableViewCell *customCell = (CustomTableViewCell*) cell;
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            
+            [customCell.emprestimo setValue:[NSNumber numberWithBool:YES] forKey:@"devolvido"];
+            [customCell.emprestimo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    dispatch_async(dispatch_get_main_queue(), ^(){
+                        [_emprestimos removeObjectAtIndex:cellIndexPath.row];
+                        [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+                        //NSLog(@"%@", customCell.emprestimo);
+                    });
+                }else{
+                    NSLog(@"Erro ao devolver objeto!");
+                }
+            }];
             break;
         }
             
