@@ -10,6 +10,8 @@
 #import "RegistrarViewController.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+//#import <ParseFacebookUtils/PFFacebookUtils.h>
+
 
 @interface RegistrarViewController ()
 
@@ -17,9 +19,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *fieldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *fieldEmail;
 @property (weak, nonatomic) IBOutlet UIButton *wordDown;
-@property(nonatomic, getter=isSigningUp) BOOL signingUp;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottom;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
+@property(nonatomic, getter=isSigningUp) BOOL signingUp;
 
 @end
 
@@ -241,6 +244,44 @@ static CGFloat keyboardHeightOffset = 15.0f;
     UIViewController *vc = [[UIStoryboard storyboardWithName:@"App" bundle:nil] instantiateInitialViewController];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)loginButtonTouchHandler:(id)sender  {
+    /*
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    
+    // Login PFUser using Facebook
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [_spinner stopAnimating]; // Hide loading indicator
+        
+        if (!user) {
+            NSString *errorMessage = nil;
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                errorMessage = @"Uh oh. The user cancelled the Facebook login.";
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+                errorMessage = [error localizedDescription];
+            }
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:errorMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        } else {
+            if (user.isNew) {
+                NSLog(@"User with facebook signed up and logged in!");
+            } else {
+                NSLog(@"User with facebook logged in!");
+            }
+            [_spinner stopAnimating];
+        }
+    }];
+    
+    [_spinner startAnimating]; // Show loading indicator until login is finished
+     */
 }
 
 @end

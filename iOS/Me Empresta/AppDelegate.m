@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
-
 #import "AppDelegate.h"
+//#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FacebookSDK/FacebookSDK.h>
+
 #define PARSE_APPLICATION_ID "I8MUBz2vwKB33V6poVIIOxhmEyBV8kkt329Ci4SN"
 #define PARSE_CLIENT_KEY "anqCuGkGXBg9OZoexXlVVkVHpYIaZK7jXseyplyG"
 
@@ -33,6 +35,14 @@
                                                                   alpha:1.0f]];
 }
 
+-(void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBAppEvents activateApp];
+//    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+//    [[PFFacebookUtils session] close];
+}
 
 - (void)enableParseAPI:(NSDictionary *)launchOptions{
     // [Optional] Power your app with Local Datastore. For more info, go to

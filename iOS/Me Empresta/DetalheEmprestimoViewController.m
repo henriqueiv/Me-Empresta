@@ -51,6 +51,7 @@
         emprestimo = [query getObjectWithId:_emprestimo.objectId];
     }else{
         emprestimo = [PFObject objectWithClassName:@"Emprestimo"];
+        emprestimo[@"devolvido"] = [NSNumber numberWithBool:NO];
     }
     
     emprestimo[@"de"] = [PFUser currentUser].username;

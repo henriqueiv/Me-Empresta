@@ -13,6 +13,8 @@
 		620CEAFE1AAF5D10000B77AF /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 620CEAF61AAF5D10000B77AF /* SWTableViewCell.m */; };
 		620CEAFF1AAF5D10000B77AF /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 620CEAF81AAF5D10000B77AF /* SWUtilityButtonTapGestureRecognizer.m */; };
 		620CEB001AAF5D10000B77AF /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 620CEAFA1AAF5D10000B77AF /* SWUtilityButtonView.m */; };
+		623587981AB21CAF00A01423 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623587971AB21CAF00A01423 /* FacebookSDK.framework */; };
+		6235879C1AB222B300A01423 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235879B1AB222B300A01423 /* ParseFacebookUtils.framework */; };
 		6267B2C71AA8E2F80035E516 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 6267B2C61AA8E2F80035E516 /* Base.m */; };
 		6267B2CD1AAA0C340035E516 /* RegistrarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6267B2CC1AAA0C340035E516 /* RegistrarViewController.m */; };
 		6295D9B11AA63BA00072E444 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6295D9B01AA63BA00072E444 /* main.m */; };
@@ -66,6 +68,8 @@
 		620CEAF81AAF5D10000B77AF /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		620CEAF91AAF5D10000B77AF /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
 		620CEAFA1AAF5D10000B77AF /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
+		623587971AB21CAF00A01423 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		6235879B1AB222B300A01423 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		6267B2C51AA8E2F80035E516 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
 		6267B2C61AA8E2F80035E516 /* Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base.m; sourceTree = "<group>"; };
 		6267B2CB1AAA0C340035E516 /* RegistrarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrarViewController.h; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6235879C1AB222B300A01423 /* ParseFacebookUtils.framework in Frameworks */,
 				62C712EC1AA8C0FA00931989 /* CFNetwork.framework in Frameworks */,
 				62C712ED1AA8C0FA00931989 /* CoreGraphics.framework in Frameworks */,
 				62C712EE1AA8C0FA00931989 /* CoreLocation.framework in Frameworks */,
@@ -126,6 +131,7 @@
 				62C712E11AA8C0B000931989 /* AudioToolbox.framework in Frameworks */,
 				62C712DF1AA8C07A00931989 /* Parse.framework in Frameworks */,
 				62C712DE1AA8C07A00931989 /* Bolts.framework in Frameworks */,
+				623587981AB21CAF00A01423 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +167,8 @@
 		6295D9A21AA63BA00072E444 = {
 			isa = PBXGroup;
 			children = (
+				6235879B1AB222B300A01423 /* ParseFacebookUtils.framework */,
+				623587971AB21CAF00A01423 /* FacebookSDK.framework */,
 				62C712E21AA8C0FA00931989 /* CFNetwork.framework */,
 				62C712E31AA8C0FA00931989 /* CoreGraphics.framework */,
 				62C712E41AA8C0FA00931989 /* CoreLocation.framework */,
