@@ -18,8 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *fieldEmail;
 @property (weak, nonatomic) IBOutlet UIButton *wordDown;
 @property(nonatomic, getter=isSigningUp) BOOL signingUp;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottom;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintToBottom;
 
 @end
 
@@ -31,7 +31,6 @@ static CGFloat keyboardHeightOffset = 15.0f;
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self configInitialView];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -58,10 +57,10 @@ static CGFloat keyboardHeightOffset = 15.0f;
     NSTimeInterval keyboardAnimationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     if (!_initialConstant) {
-        _initialConstant = _constraintBottom.constant;
+        _initialConstant = _constraintToBottom.constant;
     }
     // If screen can fit everything, leave the constant untouched.
-    _constraintBottom.constant = MAX(keyboardFrame.size.height + keyboardHeightOffset, _initialConstant);
+    _constraintToBottom.constant = MAX(keyboardFrame.size.height + keyboardHeightOffset, _initialConstant);
     [UIView animateWithDuration:keyboardAnimationDuration animations:^{
         // This method will automatically animate all views to satisfy new constants.
         [self.view layoutIfNeeded];
@@ -75,7 +74,7 @@ static CGFloat keyboardHeightOffset = 15.0f;
     NSTimeInterval keyboardAnimationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     // Putting everything back to place.
-    _constraintBottom.constant = _initialConstant;
+    _constraintToBottom.constant = _initialConstant;
     [UIView animateWithDuration:keyboardAnimationDuration animations:^{
         [self.view layoutIfNeeded];
     }];

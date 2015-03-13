@@ -101,13 +101,13 @@
                                      alpha:1.0f];
     
     
-    cell.backgroundColor = amarelo;
+    cell.backgroundColor = cinza;
     
     [cell.textLabel setBackgroundColor:cell.backgroundColor];
     [cell.detailTextLabel setBackgroundColor:cell.backgroundColor];
     
-    [cell.textLabel setTextColor:[UIColor blackColor]];
-    [cell.detailTextLabel setTextColor:[UIColor blackColor]];
+    [cell.textLabel setTextColor:[UIColor whiteColor]];
+    [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
     
 }
 

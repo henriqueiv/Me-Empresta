@@ -15,16 +15,26 @@
 @property (weak, nonatomic) IBOutlet UITextField *tfDataEmprestimo;
 @property (weak, nonatomic) IBOutlet UITextField *tfDataDevolucao;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintToBottom;
 
 @end
 
 @implementation DetalheEmprestimoViewController
+
+CGFloat _initialConstant;
+static CGFloat keyboardHeightOffset = 15.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [_imgView.layer setBorderColor:[[UIColor blackColor] CGColor]];
     [_imgView.layer setBorderWidth:2.0];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"dd MMM, yyyy"];
@@ -39,6 +49,42 @@
         _tfDataDevolucao.text = [format stringFromDate:[NSDate date]];
         [_tfDescricao becomeFirstResponder];
     }
+}
+- (void)keyboardWillShow:(NSNotification*)notification {
+    
+    // Getting the keyboard frame and animation duration.
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    NSTimeInterval keyboardAnimationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    if (!_initialConstant) {
+        _initialConstant = _constraintToBottom.constant;
+    }
+    // If screen can fit everything, leave the constant untouched.
+    _constraintToBottom.constant = MAX(keyboardFrame.size.height + keyboardHeightOffset, _initialConstant);
+    [UIView animateWithDuration:keyboardAnimationDuration animations:^{
+        // This method will automatically animate all views to satisfy new constants.
+        [self.view layoutIfNeeded];
+    }];
+    
+}
+
+- (void)keyboardWillHide:(NSNotification*)notification {
+    
+    // Getting the keyboard frame and animation duration.
+    NSTimeInterval keyboardAnimationDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    // Putting everything back to place.
+    _constraintToBottom.constant = _initialConstant;
+    [UIView animateWithDuration:keyboardAnimationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.tfDescricao resignFirstResponder];
+    [self.tfPara resignFirstResponder];
+    [self.tfDataEmprestimo resignFirstResponder];
+    [self.tfDataDevolucao resignFirstResponder];
 }
 
 -(IBAction)finishEditing:(id)sender{
