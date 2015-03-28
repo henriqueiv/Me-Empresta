@@ -11,6 +11,6 @@
 
 @interface EmprestimosViewController : UIViewController <SWTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
--(void)loadData;
+- (void)loadData;
 
 @end

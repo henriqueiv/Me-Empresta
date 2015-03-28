@@ -13,12 +13,14 @@
 
 #define SWIPE_CELL_RIGHT_DELETE_BUTTON 0
 #define SWIPE_CELL_LEFT_SETTLE_BUTTON 0
+
 @interface EmprestimosViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *btnAdd;
-@property (weak, nonatomic) IBOutlet UIImageView *btnRefresh;
 @property (weak, nonatomic) IBOutlet UIImageView *btnLogout;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableArray *emprestimos;
 
 @end
@@ -27,15 +29,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:_refreshControl];
+    [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+
+    
     [self loadData];
     
     UITapGestureRecognizer *tapAdd = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAdd)];
     [tapAdd setNumberOfTapsRequired:1];
     [_btnAdd addGestureRecognizer:tapAdd];
     
-    UITapGestureRecognizer *tapRefresh = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRefresh)];
-    [tapRefresh setNumberOfTapsRequired:1];
-    [_btnRefresh addGestureRecognizer:tapRefresh];
+//    UITapGestureRecognizer *tapRefresh = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refreshTable)];
+//    [tapRefresh setNumberOfTapsRequired:1];
+//    [_btnRefresh addGestureRecognizer:tapRefresh];
     
     UITapGestureRecognizer *tapLogout = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapLogout)];
     [tapLogout setNumberOfTapsRequired:1];
@@ -56,8 +64,10 @@
     [self logout];
 }
 
--(void)tapRefresh{
+-(void)refreshTable{
     [self loadData];
+    [self.tableView reloadData];
+    [_refreshControl endRefreshing];
 }
 
 -(void)loadData{
@@ -71,7 +81,6 @@
     if (erro) {
         NSLog(@"Erro: %@", erro);
     }
-    [_tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -106,9 +115,8 @@
     [cell.textLabel setBackgroundColor:cell.backgroundColor];
     [cell.detailTextLabel setBackgroundColor:cell.backgroundColor];
     
-    [cell.textLabel setTextColor:[UIColor whiteColor]];
-    [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
-    
+    [cell.textLabel setTextColor:[UIColor blackColor]];
+    [cell.detailTextLabel setTextColor:[UIColor blackColor]];
 }
 
 -(UIColor*)invertColor:(UIColor*)baseColor{
@@ -151,7 +159,7 @@
     cell.rightUtilityButtons = rightUtilityButtons;
     cell.leftUtilityButtons = leftUtilityButtons;
     cell.emprestimo = o;
-    NSLog(@"%@", cell);
+//    NSLog(@"%@", cell);
     
     return cell;
 }
@@ -185,7 +193,11 @@
 
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
-    [self loadData];
+    if([segue.identifier isEqualToString:@"showDetail"]){
+        [self loadData];
+    }else if ([segue.identifier isEqualToString:@"touchId"]){
+        // Do nothing
+    }
 }
 
 -(void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index{

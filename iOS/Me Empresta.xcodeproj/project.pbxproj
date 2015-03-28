@@ -39,7 +39,12 @@
 		62C712F51AA8C0FA00931989 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C712EB1AA8C0FA00931989 /* SystemConfiguration.framework */; };
 		62C7132A1AA8DECB00931989 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C713291AA8DECB00931989 /* Usuario.m */; };
 		DC02040E1AAB5BB40052EF30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC02040D1AAB5BB40052EF30 /* Localizable.strings */; };
+		DC109D6D1AB5F85900300D24 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC109D6C1AB5F85900300D24 /* SettingsViewController.m */; };
+		DC3676901AB396BF0041D475 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC36768F1AB396BF0041D475 /* LoadingView.m */; };
+		DC3676951AB3A7260041D475 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3676941AB3A7260041D475 /* MBProgressHUD.m */; };
 		DC8BB5481AAB8BEC008B15BF /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BB5471AAB8BEC008B15BF /* CustomTableViewCell.m */; };
+		DCE1825C1AB602E80020AA2A /* SimpleKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE1825B1AB602E80020AA2A /* SimpleKeyChain.m */; };
+		DCE1825F1AB62A8F0020AA2A /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE1825E1AB62A8F0020AA2A /* SettingsTableViewController.m */; };
 		DCF6DFA71AAD63BB009A52BB /* DetalheEmprestimoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF6DFA61AAD63BB009A52BB /* DetalheEmprestimoViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -102,8 +107,18 @@
 		62C713281AA8DECB00931989 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
 		62C713291AA8DECB00931989 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
 		DC02040D1AAB5BB40052EF30 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		DC109D6B1AB5F85900300D24 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		DC109D6C1AB5F85900300D24 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		DC36768E1AB396BF0041D475 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		DC36768F1AB396BF0041D475 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		DC3676931AB3A7260041D475 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		DC3676941AB3A7260041D475 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DC8BB5461AAB8BEC008B15BF /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		DC8BB5471AAB8BEC008B15BF /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		DCE1825A1AB602E80020AA2A /* SimpleKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKeyChain.h; sourceTree = "<group>"; };
+		DCE1825B1AB602E80020AA2A /* SimpleKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKeyChain.m; sourceTree = "<group>"; };
+		DCE1825D1AB62A8F0020AA2A /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		DCE1825E1AB62A8F0020AA2A /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		DCF6DFA51AAD63BB009A52BB /* DetalheEmprestimoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalheEmprestimoViewController.h; sourceTree = "<group>"; };
 		DCF6DFA61AAD63BB009A52BB /* DetalheEmprestimoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalheEmprestimoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,19 +176,8 @@
 		6295D9A21AA63BA00072E444 = {
 			isa = PBXGroup;
 			children = (
-				62C712E21AA8C0FA00931989 /* CFNetwork.framework */,
-				62C712E31AA8C0FA00931989 /* CoreGraphics.framework */,
-				62C712E41AA8C0FA00931989 /* CoreLocation.framework */,
-				62C712E51AA8C0FA00931989 /* libsqlite3.dylib */,
-				62C712E61AA8C0FA00931989 /* libz.dylib */,
-				62C712E71AA8C0FA00931989 /* MobileCoreServices.framework */,
-				62C712E81AA8C0FA00931989 /* QuartzCore.framework */,
-				62C712E91AA8C0FA00931989 /* Security.framework */,
-				62C712EA1AA8C0FA00931989 /* StoreKit.framework */,
-				62C712EB1AA8C0FA00931989 /* SystemConfiguration.framework */,
-				62C712E01AA8C0B000931989 /* AudioToolbox.framework */,
-				62C712DC1AA8C07A00931989 /* Bolts.framework */,
-				62C712DD1AA8C07A00931989 /* Parse.framework */,
+				DC3676921AB3A2110041D475 /* System Frameworks */,
+				DC3676911AB3A2000041D475 /* User Frameworks */,
 				6295D9AD1AA63BA00072E444 /* Me Empresta */,
 				6295D9C71AA63BA00072E444 /* Me EmprestaTests */,
 				6295D9AC1AA63BA00072E444 /* Products */,
@@ -192,6 +196,7 @@
 		6295D9AD1AA63BA00072E444 /* Me Empresta */ = {
 			isa = PBXGroup;
 			children = (
+				DC36768D1AB396A70041D475 /* Utils */,
 				620CEAEE1AAF5CE8000B77AF /* SWTableViewCell */,
 				62A1E3221AA78BC600C05188 /* App */,
 				62A1E3211AA78BBD00C05188 /* Login */,
@@ -259,14 +264,58 @@
 			isa = PBXGroup;
 			children = (
 				6295D9B81AA63BA00072E444 /* App.storyboard */,
+				DC109D6B1AB5F85900300D24 /* SettingsViewController.h */,
+				DC109D6C1AB5F85900300D24 /* SettingsViewController.m */,
 				DC8BB5461AAB8BEC008B15BF /* CustomTableViewCell.h */,
 				DC8BB5471AAB8BEC008B15BF /* CustomTableViewCell.m */,
 				62A1E3161AA76BC900C05188 /* EmprestimosViewController.h */,
 				62A1E3171AA76BC900C05188 /* EmprestimosViewController.m */,
 				DCF6DFA51AAD63BB009A52BB /* DetalheEmprestimoViewController.h */,
 				DCF6DFA61AAD63BB009A52BB /* DetalheEmprestimoViewController.m */,
+				DCE1825D1AB62A8F0020AA2A /* SettingsTableViewController.h */,
+				DCE1825E1AB62A8F0020AA2A /* SettingsTableViewController.m */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		DC36768D1AB396A70041D475 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DCE1825A1AB602E80020AA2A /* SimpleKeyChain.h */,
+				DCE1825B1AB602E80020AA2A /* SimpleKeyChain.m */,
+				DC3676931AB3A7260041D475 /* MBProgressHUD.h */,
+				DC3676941AB3A7260041D475 /* MBProgressHUD.m */,
+				DC36768E1AB396BF0041D475 /* LoadingView.h */,
+				DC36768F1AB396BF0041D475 /* LoadingView.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		DC3676911AB3A2000041D475 /* User Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62C712DD1AA8C07A00931989 /* Parse.framework */,
+			);
+			name = "User Frameworks";
+			sourceTree = "<group>";
+		};
+		DC3676921AB3A2110041D475 /* System Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62C712E21AA8C0FA00931989 /* CFNetwork.framework */,
+				62C712E31AA8C0FA00931989 /* CoreGraphics.framework */,
+				62C712E41AA8C0FA00931989 /* CoreLocation.framework */,
+				62C712E51AA8C0FA00931989 /* libsqlite3.dylib */,
+				62C712E61AA8C0FA00931989 /* libz.dylib */,
+				62C712E71AA8C0FA00931989 /* MobileCoreServices.framework */,
+				62C712E81AA8C0FA00931989 /* QuartzCore.framework */,
+				62C712E91AA8C0FA00931989 /* Security.framework */,
+				62C712EA1AA8C0FA00931989 /* StoreKit.framework */,
+				62C712EB1AA8C0FA00931989 /* SystemConfiguration.framework */,
+				62C712E01AA8C0B000931989 /* AudioToolbox.framework */,
+				62C712DC1AA8C07A00931989 /* Bolts.framework */,
+			);
+			name = "System Frameworks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,11 +367,11 @@
 				TargetAttributes = {
 					6295D9AA1AA63BA00072E444 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 29P59JP27S;
+						DevelopmentTeam = 8WCPHDZJPJ;
 					};
 					6295D9C31AA63BA00072E444 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 29P59JP27S;
+						DevelopmentTeam = 8WCPHDZJPJ;
 						TestTargetID = 6295D9AA1AA63BA00072E444;
 					};
 				};
@@ -374,13 +423,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				620CEAFC1AAF5D10000B77AF /* SWCellScrollView.m in Sources */,
+				DCE1825C1AB602E80020AA2A /* SimpleKeyChain.m in Sources */,
+				DC3676901AB396BF0041D475 /* LoadingView.m in Sources */,
 				620CEAFE1AAF5D10000B77AF /* SWTableViewCell.m in Sources */,
+				DC109D6D1AB5F85900300D24 /* SettingsViewController.m in Sources */,
 				62C7132A1AA8DECB00931989 /* Usuario.m in Sources */,
 				62A1E3181AA76BC900C05188 /* EmprestimosViewController.m in Sources */,
 				6295D9B41AA63BA00072E444 /* AppDelegate.m in Sources */,
 				DCF6DFA71AAD63BB009A52BB /* DetalheEmprestimoViewController.m in Sources */,
+				DC3676951AB3A7260041D475 /* MBProgressHUD.m in Sources */,
 				6295D9B11AA63BA00072E444 /* main.m in Sources */,
 				620CEB001AAF5D10000B77AF /* SWUtilityButtonView.m in Sources */,
+				DCE1825F1AB62A8F0020AA2A /* SettingsTableViewController.m in Sources */,
 				6267B2CD1AAA0C340035E516 /* RegistrarViewController.m in Sources */,
 				620CEAFF1AAF5D10000B77AF /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				620CEAFB1AAF5D10000B77AF /* NSMutableArray+SWUtilityButtons.m in Sources */,
@@ -511,13 +565,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Me Empresta/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -525,13 +583,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Me Empresta/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

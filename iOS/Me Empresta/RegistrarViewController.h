@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/PFUser.h>
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
+#import "LoadingView.h"
+#import "MBProgressHUD.h"
 
 @interface RegistrarViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 

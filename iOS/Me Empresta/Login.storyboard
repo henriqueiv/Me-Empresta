@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bWq-aO-R1C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bWq-aO-R1C">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -25,10 +26,10 @@
                                 <rect key="frame" x="6" y="411" width="308" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.97581142919999997" blue="0.93442260229999996" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="wordDown" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-Bj-0ck">
-                                <rect key="frame" x="129" y="454" width="62" height="30"/>
+                                <rect key="frame" x="0.0" y="454" width="320" height="30"/>
                                 <state key="normal" title="Registrar">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -51,13 +52,13 @@
                                 <color key="backgroundColor" red="1" green="0.97581142919999997" blue="0.93442260229999996" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LZ2-Pf-EH6">
                                 <rect key="frame" x="6" y="368" width="308" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.97581142919999997" blue="0.93442260229999996" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51b-kD-XG5">
                                 <rect key="frame" x="35" y="287" width="62" height="30"/>
@@ -72,6 +73,15 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="anY-Fn-FoY">
                                 <rect key="frame" x="142" y="211" width="37" height="37"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDC-nJ-4Nv">
+                                <rect key="frame" x="220" y="454" width="92" height="30"/>
+                                <state key="normal" title="Use Touch ID">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchId:" destination="bWq-aO-R1C" eventType="touchUpInside" id="OjG-ns-53H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.94901960780000005" green="0.4549019608" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,21 +90,28 @@
                             <constraint firstAttribute="trailingMargin" secondItem="sgk-mR-MQD" secondAttribute="trailing" constant="46" id="A46-2J-JiJ"/>
                             <constraint firstItem="wEe-Ij-BoP" firstAttribute="leading" secondItem="p55-37-F9d" secondAttribute="leadingMargin" constant="-10" id="C7u-At-Lns"/>
                             <constraint firstItem="hDC-hc-rfW" firstAttribute="top" secondItem="sgk-mR-MQD" secondAttribute="bottom" constant="8" id="CFy-Xd-bfe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uGk-Bj-0ck" secondAttribute="trailing" constant="-16" id="KoV-xr-aTH"/>
+                            <constraint firstItem="uGk-Bj-0ck" firstAttribute="leading" secondItem="p55-37-F9d" secondAttribute="leadingMargin" constant="-16" id="Mvu-0B-4mn"/>
                             <constraint firstItem="wEe-Ij-BoP" firstAttribute="top" secondItem="LZ2-Pf-EH6" secondAttribute="bottom" constant="13" id="PBl-NI-hHO"/>
+                            <constraint firstAttribute="centerX" secondItem="ZDC-nJ-4Nv" secondAttribute="centerX" constant="-106" id="Qwe-3C-NIm"/>
                             <constraint firstItem="51b-kD-XG5" firstAttribute="leading" secondItem="p55-37-F9d" secondAttribute="leadingMargin" constant="19" id="Smo-yN-0Ig"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LZ2-Pf-EH6" secondAttribute="trailing" constant="-10" id="U8a-mh-fza"/>
                             <constraint firstItem="hDC-hc-rfW" firstAttribute="leading" secondItem="p55-37-F9d" secondAttribute="leadingMargin" constant="-10" id="Uka-hq-DdU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hDC-hc-rfW" secondAttribute="trailing" constant="-10" id="aB9-W4-ZMl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wEe-Ij-BoP" secondAttribute="trailing" constant="-10" id="bhC-gl-vz6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZDC-nJ-4Nv" secondAttribute="trailing" constant="-8" id="c9O-S5-wVt"/>
+                            <constraint firstItem="4MU-BZ-Lmj" firstAttribute="top" secondItem="ZDC-nJ-4Nv" secondAttribute="bottom" constant="84" id="dyY-Tb-v1i"/>
                             <constraint firstItem="LZ2-Pf-EH6" firstAttribute="top" secondItem="hDC-hc-rfW" secondAttribute="bottom" constant="13" id="hLA-nM-PHO"/>
                             <constraint firstItem="4MU-BZ-Lmj" firstAttribute="top" secondItem="uGk-Bj-0ck" secondAttribute="bottom" constant="84" id="hl3-3f-KYU"/>
                             <constraint firstAttribute="centerX" secondItem="uGk-Bj-0ck" secondAttribute="centerX" id="pAr-oI-7pc"/>
                             <constraint firstItem="LZ2-Pf-EH6" firstAttribute="leading" secondItem="p55-37-F9d" secondAttribute="leadingMargin" constant="-10" id="s3X-2Y-KFh"/>
                             <constraint firstItem="uGk-Bj-0ck" firstAttribute="top" secondItem="wEe-Ij-BoP" secondAttribute="bottom" constant="13" id="vGY-cS-0An"/>
+                            <constraint firstItem="ZDC-nJ-4Nv" firstAttribute="top" secondItem="wEe-Ij-BoP" secondAttribute="bottom" constant="13" id="whN-Ui-kZc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dob-E0-SO4"/>
                     <connections>
+                        <outlet property="btnTouchId" destination="ZDC-nJ-4Nv" id="gFX-eg-qGe"/>
                         <outlet property="constraintToBottom" destination="hl3-3f-KYU" id="aYg-DH-pbu"/>
                         <outlet property="fieldEmail" destination="wEe-Ij-BoP" id="CPw-ea-72W"/>
                         <outlet property="fieldPassword" destination="LZ2-Pf-EH6" id="lDL-bJ-OcJ"/>
@@ -105,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNm-Lc-7ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66" y="994"/>
+            <point key="canvasLocation" x="-74" y="941"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
